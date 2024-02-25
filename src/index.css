@@ -1,3 +1,7 @@
+*{margin: 0; padding: 0; box-sizing: border-box;}
+a{
+  all: unset;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,7 +11,254 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+header{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid silver;
+  padding: 25px;
+  background-color: rgb(247, 247, 247);
+  color: rgb(192, 160, 121);
+}
+.header-container span{
+  color: black;
+  font-style: italic;
+  font-size: 40px;
+  text-shadow: 0px 30px 10px black;
+}
+
+.shoping,
+.header-container{
+  margin-left: auto;
+}
+.shoping{
+  transition: color 0.5s ease;
+  font-size: 35px;
+}
+.shoping:hover,
+.shoping.active{
+  transform: scale(1.1);
+  color: rgb(255, 81, 81);
+}
+.shopList{
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  z-index: 99;
+  position: fixed;
+  right: 10px;
+  max-height: 100vh;
+  width: 250px;
+  min-height: 100px;
+  background-color: white;
+  box-shadow: 27px 17px 51px -18px rgba(0,0,0,0.75);
+}
+.shopList span{
+  align-self: flex-end;
+  padding: 5px;
+  font-weight: bolder;
+  border: 1px solid;
+  margin-bottom: 20px;
+}
+.deleteClose{
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.container {
+  position: fixed;
+  left: 20px;
+}
+.element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: green;
+  border-radius: 50%;
+  animation: flee 3s infinite;
+  transition: all 0.4s ease;
+}
+
+@keyframes flee {
+  0% {
+    transform: translate(-10%, -10%);
+  }
+  50% {
+    transform: translate(calc(-20% + 10px), calc(-20% + 10px));
+  }
+  100% {
+    transform: translate(-10%, -10%);
+  }
+}
+
+
+
+
+main{
+  max-width: 950px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 5vw auto;
+}
+
+.serch-input{
+  text-align: center;
+  width: 100%;
+}
+.serch-input input{
+  border-radius: 0.6em;
+  padding: 15px;
+  width: 80%;
+}
+
+.productBox{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 30%;
+  height: 500px;
+  padding: 10px;
+  margin: 25px 0;
+}
+
+.productImg{
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+  height: 55%;
+  margin-top: auto;
+}
+.productImg img{
+  width: 100%;
+  height: 100%;
+}
+
+
+.productBox h5{
+  transition: transform 0.5s ease-in-out;
+}
+
+.productBox h2 {
+  position: relative;
+}
+
+.productBox h2::before{
+  background: hsl(45 100% 70%);
+  content: "";
+  inset: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+  z-index: -1;
+}
+
+.productBox:hover h2::before{
+  transform: scaleX(1);
+  transform-origin: right;
+}
+
+.productBox:hover h5{
+  transform: scale(1.1);
+}
+
+footer{
+  padding: 50px;
+  background-color: darkcyan;
+  color: beige;
+}
+
+.productMain{
+  padding: 100px;
+}
+.aboutProduct{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  max-width: 950px;
+  margin: auto;
+  margin-bottom: 5vw;
+}
+.aboutText{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+  background-color: rgb(247, 247, 247);
+  border: 0.5px solid rgba(192, 192, 192, 0.341);
+  border-radius: 0.6em;
+}
+.aboutProdImg{
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+  height: 300px;
+  margin-top: auto;
+}
+.aboutProdImg img{
+  width: 100%;
+}
+
+@media screen and (max-width: 900px){
+  .container {
+    bottom: 30px;
+    right: 20px;
+    left: auto;
+  }
+  main{
+    max-width: 650px;
+    margin: 5vw auto;
+  }
+
+  .productBox{
+    gap: 10px;
+    width: 45%;
+    height: 500px;
+    padding: 10px;
+    margin: 25px 0;
+  }
+  .productMain{
+    padding: 50px;
+  }
+  .aboutProduct{
+    gap: 15px;
+  }
+
+}
+@media screen and (max-width: 650px){
+  .container {
+    bottom: 30px;
+    right: 20px;
+    left: auto;
+  }
+  main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5vw auto;
+    max-width: 500px;
+  }
+  .productMain{
+    padding: 5px;
+  }
+  .productBox{
+    gap: 10px;
+    width: 100%;
+    height: 500px;
+    padding: 10px;
+    margin: 25px 0;
+  }
+  .aboutProduct{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    max-width: 500px;
+  }
+
 }
